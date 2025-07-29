@@ -11,3 +11,4 @@ The app also makes use of best practices such as:
 * gitignoring node_modules folder files and .env which has sensitive DB credentials.
 * using nodemon to apply changes to server without restarting it
 * persisting data on the list.
+* Using CRUD principles for creating, reading (getting), updating, and deleting tasks.
