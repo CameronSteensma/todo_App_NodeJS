@@ -28,6 +28,22 @@ router.post('/', async (req, res) => {
     }
 });
 
+// Patch update a task
+router.patch('/:id', async (req, res) => {
+  try {
+    const task = await Task.findById(req.params.id);
+    if (!task) return res.status(404).json({ message: 'Task not found' });
+
+    if (req.body.title !== undefined) task.title = req.body.title;
+    if (req.body.completed !== undefined) task.completed = req.body.completed;
+
+    const updatedTask = await task.save();
+    res.json(updatedTask);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
 // PUT update a task
 router.put('/:id', async (req, res) => {
     try {
